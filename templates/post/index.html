@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
+
+{% block body %}
     {% for post in posts %}
 
         <p> {{ post.id }} </p>
@@ -16,5 +12,5 @@
         </a>
 
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
