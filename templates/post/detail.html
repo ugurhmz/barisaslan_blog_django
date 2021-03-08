@@ -2,12 +2,29 @@
 
 {% block body %}
 
+    <div class="container">
+             <div class="row row-cols-2 g-0 mb-3">
+              <div class="col">
+                <div class="card">
+                  <img src="" class="card-img-top" alt="...">
+
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content | linebreaks }}</p>
+                      <p>
+                          <a href="{{ post.get_update_url }}" class="btn btn-outline-success">Güncelle</a>
+                          <a href="{{ post.get_delete_url }}" class="btn btn-outline-danger">Sil</a>
+                      </p>
+                      <small class="text-muted">{{ post.publishing_date | timesince}} önce yayınlandı</small>
+                  </div>
+                </div>
+          </div>
+         </div>
 
 
-     <p>  {{ post.title }}</p>
 
-     <p> {{ post.content }}</p>
-     <p> {{ post.publishing_date }} </p>
+
+    </div>
 
 
 {% endblock %}

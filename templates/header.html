@@ -1,0 +1,52 @@
+
+{%  load static%}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-1">
+  <div class="container-fluid">
+       <!-- ______________ LOGO & COLLAPSE___________________ -->
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'myimages/Greyjoy-icon.png' %}" >
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <!-- ______________NAVBAR ___________________ -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+              <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{% url 'home' %}">
+                     <span class="fs-4">Anasayfa</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'post_index' %}">
+                      <span class="fs-4">Blog</span>
+                  </a>
+                </li>
+                  <li class="nav-item">
+                      <a href="{% url 'post_create' %}" class="nav-link">
+                          <span class="fs-4">Yazı Ekle</span>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <span class="fs-4">Hakkımda</span>
+                  </a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <span class="fs-4">İletişim</span>
+                  </a>
+                </li>
+
+
+              </ul>
+     <!-- ______________ARAMA BUTONU___________________ -->
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+
+        </div>
+  </div>
+</nav>

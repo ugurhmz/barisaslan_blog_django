@@ -1,16 +1,40 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block body %}
+
+
+
+
+<div class="container">
     {% for post in posts %}
 
-        <p> {{ post.id }} </p>
+        <div class="row row-cols-1 g-0 mb-3">
+              <div class="col">
+                <div class="card">
+                  <img src="" class="card-img-top" alt="...">
 
-        <a href="{{ post.get_absolute_url }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content | linebreaks | truncatechars:300 }}
+                        </p>
 
-        {{ post.title }}
-        </a>
+                      <p>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-warning">Oku </a>
+                        <a href="{{ post.get_update_url }}" class="btn btn-outline-success">Güncelle</a>
+                        <a href="{{ post.get_delete_url }}" class="btn btn-outline-danger">Sil</a>
+                      </p>
+                      <small class="text-muted">{{ post.publishing_date | timesince }} önce yayınlandı</small>
+                  </div>
+                </div>
+          </div>
+         </div>
+
 
     {% endfor %}
+</div>
+
+
+
 
 {% endblock %}

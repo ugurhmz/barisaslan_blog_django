@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
+{% block title %} Home {% endblock %}
+
+
 {% block body %}
 
-    {{ isim }}
+<div class="container-fluid vh-95">
+        <div class="row">
+            <div class="col-md-4 bg-secondary" style="height:300px">1. SÜTUN</div>
+            <div class="col-md-8 bg-dark text-white" style="height: 300px">
+                    <div class="row">
+
+                        <div class="col-md-6 bg-primary" style="height: 300px">B</div>
+                        <div class="col-md-4 bg-danger" style="height: 300px">C</div>
+                        <div class="col-md-2 bg-success" style="height: 300px">D</div>
+
+                    </div>
+            </div>
+        </div>
+</div>
+
+
+
+
 {% endblock %}

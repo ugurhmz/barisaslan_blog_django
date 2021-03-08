@@ -31,13 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #________________DJANGO APPS___________
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #_____________My APPS______________
     'post',
+    #________ Third party apps.
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+
+#CRISPY-FORM İÇİN
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
