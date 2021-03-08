@@ -9,10 +9,12 @@
 <div class="container">
     {% for post in posts %}
 
-        <div class="row row-cols-1 g-0 mb-3">
+        <div class="row row-cols-2  g-0 mb-3">
               <div class="col">
                 <div class="card">
-                  <img src="" class="card-img-top" alt="...">
+                    {% if post.image %} <!-- Eğer resim varsa -->
+                         <img src="{{ post.image.url }}" class="card-img-top rounded" alt="...">
+                    {% endif %}
 
                   <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>

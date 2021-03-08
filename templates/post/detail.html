@@ -5,9 +5,11 @@
     <div class="container">
              <div class="row row-cols-2 g-0 mb-3">
               <div class="col">
-                <div class="card">
-                  <img src="" class="card-img-top" alt="...">
 
+                <div class="card">
+                      {% if post.image %}
+                      <img src="{{ post.image.url }}" class="img-fluid rounded" alt="...">
+                     {% endif %}
                   <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content | linebreaks }}</p>

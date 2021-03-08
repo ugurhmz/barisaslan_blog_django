@@ -7,7 +7,7 @@ class Post(models.Model):
         title = models.CharField(max_length = 120, verbose_name = "Baslık")
         content = models.TextField(verbose_name="İçerik")
         publishing_date = models.DateTimeField(verbose_name="Oluşturulma Tarihi", auto_now_add= True)
-
+        image = models.ImageField(blank = True, null= True)
 
         def __str__(self):
                 return self.title
@@ -24,3 +24,7 @@ class Post(models.Model):
 
         def get_update_url(self):
                 return reverse('post_update', kwargs={'detail_id':self.id })
+
+
+        class Meta:
+                ordering=['-publishing_date','id']

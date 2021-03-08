@@ -23,7 +23,7 @@ def post_detail(request,detail_id ):
 
 def post_create(request):
 
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save()
         messages.success(request,"Başarılı bir şekilde oluşturuldu...")
@@ -37,9 +37,12 @@ def post_create(request):
 
 
 
+
+
+
 def post_update(request ,detail_id ):
     post = get_object_or_404(Post,id = detail_id)
-    form = PostForm(request.POST or None , instance=post)
+    form = PostForm(request.POST or None , request.FILES or None, instance=post)
     if form.is_valid():
         form.save()
         messages.success(request,"Güncelleme başarılı....", extra_tags="myMessageCSS")
@@ -50,6 +53,8 @@ def post_update(request ,detail_id ):
     }
 
     return render(request,"post/form.html", context= context)
+
+
 
 
 
