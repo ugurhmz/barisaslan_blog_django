@@ -1,12 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import  slugify
-
+from ckeditor.fields import RichTextField
 
 class Post(models.Model):
-
+        user = models.ForeignKey("auth.User", verbose_name='Yazar',on_delete=models.CASCADE,related_name='posts')
         title = models.CharField(max_length = 120, verbose_name = "Baslık")
-        content = models.TextField(verbose_name="İçerik")
+        content = RichTextField(verbose_name="İçerik")
         publishing_date = models.DateTimeField(verbose_name="Oluşturulma Tarihi", auto_now_add= True)
         image = models.ImageField(blank = True, null= True)
         slug = models.SlugField(max_length = 130,unique =True, editable=False)
@@ -47,8 +47,22 @@ class Post(models.Model):
 
 
 
-
-
-
         class Meta:
                 ordering=['-publishing_date','id']
+
+
+class Comment(models.Model):
+                post = models.ForeignKey('post.Post', related_name='comments', on_delete=models.CASCADE)
+
+                name= models.CharField(max_length=200, verbose_name='İsim')
+                content= models.TextField(verbose_name='Yorum')
+
+                created_date = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
+
+
+

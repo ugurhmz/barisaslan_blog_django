@@ -12,6 +12,7 @@
                     {% csrf_token %}
                         <h1>İçerik formu</h1>
                         {{ form|crispy }}
+                        {{ form.media }}
                         <button type="submit" class="btn btn-primary mt-3">Gönder</button>
                 </form>
 

@@ -12,7 +12,8 @@
                      {% endif %}
                   <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content | linebreaks }}</p>
+                    <small class="text-danger">{{ post.user.get_full_name }}</small>
+                    <p class="card-text">{{ post.content | safe |  linebreaks }}</p>
                       {% if request.user.is_authenticated %}
                       <p>
                           <a href="{{ post.get_update_url }}" class="btn btn-outline-success">Güncelle</a>
@@ -22,6 +23,26 @@
                       <small class="text-muted">{{ post.publishing_date | timesince}} önce yayınlandı</small>
                   </div>
                 </div>
+                  <br><br>
+              {% for comment in post.comments.all %}
+            <div class="card border-success mb-3">
+
+                  <div class="card-header bg-light border-success">{{ comment.name }} </div>
+                  <div class="card-body">
+                    <h6 class="card-title">{{ comment.created_date|timesince }} önce yapıldı</h6>
+                    <p class="text-dark">{{ comment.content|linebreaks }}</p>
+                  </div>
+
+            </div>
+  {% endfor  %}
+                  <div class="card-body">
+                        <h4>Yorum ekle</h4>
+                {% include 'post/comment.html' %}
+
+
+                  </div>
+
+
           </div>
          </div>
 
