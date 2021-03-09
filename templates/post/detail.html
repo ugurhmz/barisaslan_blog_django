@@ -13,10 +13,12 @@
                   <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">{{ post.content | linebreaks }}</p>
+                      {% if request.user.is_authenticated %}
                       <p>
                           <a href="{{ post.get_update_url }}" class="btn btn-outline-success">Güncelle</a>
                           <a href="{{ post.get_delete_url }}" class="btn btn-outline-danger">Sil</a>
                       </p>
+                      {% endif %}
                       <small class="text-muted">{{ post.publishing_date | timesince}} önce yayınlandı</small>
                   </div>
                 </div>

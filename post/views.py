@@ -1,11 +1,15 @@
 
 #_______________________ POST APP'in views'i _____________________
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, Http404
 from .models import Post
 from .forms import PostForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+
+from django.utils.text import  slugify
+
+
 
 def post_index(request):
     posts = Post.objects.all()
@@ -14,14 +18,18 @@ def post_index(request):
 
 
 
-def post_detail(request,detail_id ):
-    post = get_object_or_404(Post, id=detail_id)
+def post_detail(request,slug):
+    post = get_object_or_404(Post, slug=slug)
     return render(request, "post/detail.html", {'post':post})
 
 
 
 
 def post_create(request):
+    if not request.user.is_authenticated:
+        return Http404()
+
+
 
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -40,8 +48,13 @@ def post_create(request):
 
 
 
-def post_update(request ,detail_id ):
-    post = get_object_or_404(Post,id = detail_id)
+def post_update(request ,slug ):
+    if not request.user.is_authenticated:
+        return Http404()
+
+
+
+    post = get_object_or_404(Post,slug = slug)
     form = PostForm(request.POST or None , request.FILES or None, instance=post)
     if form.is_valid():
         form.save()
@@ -58,11 +71,11 @@ def post_update(request ,detail_id ):
 
 
 
+def post_delete(request,slug):
+        if not request.user.is_authenticated:
+            return Http404()
 
-
-
-def post_delete(request,detail_id):
-        obj = get_object_or_404(Post,id=detail_id)
+        obj = get_object_or_404(Post,slug=slug)
         obj.delete()
         messages.info(request,"Silindi..")
 

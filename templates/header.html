@@ -13,31 +13,33 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
               <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{% url 'home' %}">
-                     <span class="fs-4">Anasayfa</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'post_index' %}">
-                      <span class="fs-4">Blog</span>
-                  </a>
-                </li>
-                  <li class="nav-item">
-                      <a href="{% url 'post_create' %}" class="nav-link">
-                          <span class="fs-4">Yazı Ekle</span>
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="{% url 'home' %}">
+                         <span class="fs-4">Anasayfa</span>
                       </a>
-                  </li>
-                  <li class="nav-item">
-                  <a class="nav-link" href="#">
-                      <span class="fs-4">Hakkımda</span>
-                  </a>
-                </li>
-                  <li class="nav-item">
-                  <a class="nav-link" href="#">
-                      <span class="fs-4">İletişim</span>
-                  </a>
-                </li>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'post_index' %}">
+                          <span class="fs-4">Blog</span>
+                      </a>
+                    </li>
+                    {% if request.user.is_authenticated  %}
+                      <li class="nav-item">
+                          <a href="{% url 'post_create' %}" class="nav-link">
+                              <span class="fs-4">Yazı Ekle</span>
+                          </a>
+                      </li>
+                    {% endif %}
+                      <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <span class="fs-4">Hakkımda</span>
+                      </a>
+                    </li>
+                      <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          <span class="fs-4">İletişim</span>
+                      </a>
+                    </li>
 
 
               </ul>
