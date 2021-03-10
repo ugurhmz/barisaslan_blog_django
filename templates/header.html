@@ -44,8 +44,8 @@
 
               </ul>
      <!-- ______________ARAMA BUTONU___________________ -->
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" method="GET">
+            <input class="form-control me-2" type="search" value="{{ request.GET.q }}" name="q" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
 

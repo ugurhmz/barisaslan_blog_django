@@ -6,15 +6,22 @@ from .models import Post
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-
+from django.db.models import Q
 from django.utils.text import  slugify
 from django.core.paginator import Paginator
 
 
 def post_index(request):
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, 2)  # Show 5 contacts per page.
+    query = request.GET.get('q')
+    if query:
+        post_list = post_list.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(user__first_name__icontains=query) |
+            Q(user__last_name__icontains=query)).distinct() #distinct() ile aynı kayıtlar 1 den fazla olmasın
 
+    paginator = Paginator(post_list, 2)  # Show 5 contacts per page.
     page_number = request.GET.get('page')
     posts = paginator.get_page(page_number)
 

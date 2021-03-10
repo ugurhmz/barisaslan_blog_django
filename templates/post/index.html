@@ -44,7 +44,7 @@
         <a class="page-link" href="?page=1">&laquo; İlk </a>
       <li class="page-item ">
 
-        <a class="page-link" href="?page={{posts.previous_page_number}}" tabindex="-1" aria-disabled="true">{{ posts.previous_page_number }}</a>
+        <a class="page-link" href="?page={{posts.previous_page_number}} {% if request.GET.q %}&q={{ request.GET.q }} {% endif %}" tabindex="-1" aria-disabled="true">{{ posts.previous_page_number }}</a>
       </li>
     {% else %}
       <li class="page-item disabled">
@@ -56,10 +56,10 @@
 
     {% if posts.has_next %}
       <li class="page-item">
-        <a class="page-link" href="?page={{posts.next_page_number}}"> {{ posts.next_page_number }}  </a>
+        <a class="page-link" href="?page={{posts.next_page_number}} {% if request.GET.q %}&q={{ request.GET.q }} {% endif %}"> {{ posts.next_page_number }}  </a>
       </li>
       <li class="page-item">
-        <a class="page-link" href="?page={{posts.paginator.num_pages}}">Son Sayfa</a>
+        <a class="page-link" href="?page={{posts.paginator.num_pages }}">SON</a>
       </li>
     {%endif%}
 
