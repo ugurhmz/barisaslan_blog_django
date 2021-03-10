@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cleanup',
     'ckeditor',
+
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,4 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
