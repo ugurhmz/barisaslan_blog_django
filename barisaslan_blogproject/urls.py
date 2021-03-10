@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
     path('post/', include('post.urls')),  #post/ -> tan sonra dahil et . post.urls altındaki urlleri
+    path('account/', include('account.urls'))
 ]
 
 
